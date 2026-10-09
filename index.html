@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A mental math game with levels that keeps your mind sharp and teaches you new tricks." />
+    <title>Mind Math</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <button class="brand" data-nav="home" type="button"><span aria-hidden="true">🧠</span> Mind Math</button>
+        <nav>
+          <button data-nav="home" type="button">Play</button>
+          <button data-nav="skills" type="button">Skills <span id="skills-badge" class="badge" hidden></span></button>
+        </nav>
+      </header>
+
+      <!-- Home: choose difficulty, operations and level -->
+      <main id="screen-home" class="screen">
+        <section>
+          <h2>Difficulty</h2>
+          <div class="segmented" id="difficulty" role="radiogroup" aria-label="Difficulty"></div>
+        </section>
+        <section>
+          <h2>Operations <small>pick one or more</small></h2>
+          <div class="ops" id="ops"></div>
+        </section>
+        <section>
+          <h2>Levels</h2>
+          <div class="level-grid" id="levels"></div>
+        </section>
+        <p class="stats" id="stats"></p>
+      </main>
+
+      <!-- A new skill, taught before a level starts -->
+      <main id="screen-lesson" class="screen" hidden>
+        <div class="card lesson">
+          <p class="eyebrow">💡 New skill</p>
+          <h2 id="lesson-title"></h2>
+          <p id="lesson-summary"></p>
+          <div class="example">
+            <p class="example-q" id="lesson-example"></p>
+            <ol id="lesson-steps"></ol>
+          </div>
+          <p class="muted" id="lesson-note"></p>
+          <button id="lesson-go" class="primary" type="button">Got it — let's go</button>
+        </div>
+      </main>
+
+      <!-- Playing a level -->
+      <main id="screen-play" class="screen" hidden>
+        <div class="play-head">
+          <span id="play-title"></span>
+          <span><span id="play-count"></span> · <strong id="play-score">0</strong> pts</span>
+        </div>
+        <div class="progress" aria-hidden="true"><div id="progress-bar"></div></div>
+        <div class="card question-card">
+          <p class="streak" id="streak">&nbsp;</p>
+          <p class="question" id="question" aria-live="polite"></p>
+          <div class="timer" title="Answer before the bar runs out for bonus points — no penalty if it does">
+            <div id="timer-bar"></div>
+          </div>
+          <form id="answer-form" autocomplete="off">
+            <input id="answer" type="text" inputmode="numeric" enterkeyhint="go" aria-label="Your answer" />
+            <button class="primary" type="submit" id="answer-btn">Enter</button>
+          </form>
+          <div id="feedback" class="feedback" hidden aria-live="polite"></div>
+        </div>
+        <button class="ghost" id="quit" type="button">Quit level</button>
+      </main>
+
+      <!-- End of a level -->
+      <main id="screen-results" class="screen" hidden>
+        <div class="card results">
+          <p class="stars" id="result-stars"></p>
+          <h2 id="result-title"></h2>
+          <p class="big-score"><strong id="result-score"></strong> points</p>
+          <p id="result-detail" class="muted"></p>
+          <div id="result-missed"></div>
+          <div class="actions">
+            <button id="result-retry" type="button">Try again</button>
+            <button id="result-next" class="primary" type="button">Next level</button>
+          </div>
+          <button id="result-home" class="ghost" type="button">Back to levels</button>
+        </div>
+      </main>
+
+      <!-- Library of tricks -->
+      <main id="screen-skills" class="screen" hidden>
+        <h2>Mental math skills</h2>
+        <p class="muted">New skills appear as you climb levels. Open one to learn it now, or practise the ones you know.</p>
+        <div id="skills-list" class="skills-list"></div>
+      </main>
+    </div>
+
+    <script src="js/tricks.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

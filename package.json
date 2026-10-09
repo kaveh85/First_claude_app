@@ -1,0 +1,10 @@
+{
+  "name": "mind-math",
+  "version": "1.0.0",
+  "description": "A mental math game with levels that keeps your mind sharp and teaches you new tricks.",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "start": "python3 -m http.server 8000"
+  }
+}
